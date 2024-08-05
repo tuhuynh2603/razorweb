@@ -17,6 +17,6 @@ namespace razorweb.models
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Article> articles { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
 }

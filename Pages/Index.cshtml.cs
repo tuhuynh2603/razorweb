@@ -17,7 +17,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        var posts = (from a in myblogContext.articles orderby a.Create descending select a).ToList();
+        var posts = (from a in myblogContext.Articles orderby a.Create descending select a).ToList();
         ViewData["posts"] = posts;
     }
 }
