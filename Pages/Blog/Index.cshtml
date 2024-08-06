@@ -7,6 +7,18 @@
 }
 
 
+@{
+    var pagingModel = new XTL.Helpers.PagingModel()
+    {
+        currentPage = Model.currentPage,  
+        countPages  = Model.countPages, 
+        generateUrl =  (int? p) => Url.Page("/Blog/Index", new {p= p})
+    };
+
+}
+<partial name="_PagingXTL" model="@pagingModel" />
+
+
 <form method="get" asp-page="./Index">
     <Label> Tìm kiếm</Label>
     <input name="searchString" value=""/>
@@ -43,7 +55,8 @@
                 @Html.DisplayFor(modelItem => item.Create)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Content)
+                @Html.Raw(item.Content)
+                @* @Html.DisplayFor(modelItem => item.Content) *@
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Chỉnh sửa</a> |

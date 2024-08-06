@@ -26,13 +26,13 @@ namespace razorweb.Pages_Blog
         {
             if (id == null)
             {
-                return NotFound();
+                return Content("Not Found");
             }
 
             var article =  await _context.Articles.FirstOrDefaultAsync(m => m.Id == id);
             if (article == null)
             {
-                return NotFound();
+                return Content("Not Found");
             }
             Article = article;
             return Page();
@@ -57,7 +57,7 @@ namespace razorweb.Pages_Blog
             {
                 if (!ArticleExists(Article.Id))
                 {
-                    return NotFound();
+                    return Content("Not Found");
                 }
                 else
                 {
