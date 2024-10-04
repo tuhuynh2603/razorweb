@@ -1,24 +1,20 @@
-version: "3.7"                    
+version: "3.7"
 
-services:                         
-  xtlab-mssql:
-    image: "mysql"
+services:
+  mysql3:
+    image: "mysql:8.0"  # Use a stable MySQL image
     container_name: mysql3
     restart: always
-    hostname: mssql
-    environment: 
-      SA_PASSWORD: tu123 #Thiết lập password
-      ACCEPT_EULA: 'Y'
-      # Express: 
-
+    hostname: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: tu123  # Set a root password for MySQL
+      MYSQL_DATABASE: magnusDB  # (Optional) Create a default database
+      MYSQL_USER: tu          # (Optional) Create a user other than root
     volumes:
-      - mssqlvolume:/var/opt/mssql/data # thư mục lưu DB
-      #- ./bk:/var/opt/mssql/backup
+      - mssqlvolume:/var/lib/mysql  # MySQL's default data directorys
     ports:
-      - "1433:1433"     
-                        
-volumes:                                
-    mssqlvolume:        
-      name: sqlserver-xtlab-vl
-                    
-  
+      - "3307:3306"  # Expose MySQL on the default port 3306
+
+volumes:
+  mssqlvolume:
+    name: sqlserver-xtlab-vl

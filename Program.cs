@@ -10,9 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<MyBlogContext>(option=>{
+builder.Services.AddDbContext<MyBlogContext>(options=>{
     string connectString = builder.Configuration.GetConnectionString("MyBlogContext");
-    option.UseSqlServer(connectString);
+    options.UseMySql(connectString, ServerVersion.AutoDetect(connectString));
 });
 
 builder.Services.AddOptions();

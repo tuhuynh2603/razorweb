@@ -13,15 +13,14 @@ namespace razorweb.models
         [StringLength(255)]
         [Required]
         [Column(TypeName = "nvarchar")]
-        public string Title {get;set;}
+        public string? Title {get;set;}
 
         [DisplayName("Ngày Tạo")]
-
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Required]
         public DateTime Create {get;set;}
 
-        [Column(TypeName = "ntext")]
-        public string Content {get;set;}
+        [Column(TypeName = "TEXT")]
+        public string? Content {get;set;}
     }
 }
